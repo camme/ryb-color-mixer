@@ -1,0 +1,149 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+    <title> RLColorMixer </title>
+    <script type="text/javascript" charset="utf-8" src="rlcolormixer-0.5.0.js"> </script>
+
+    <script type="text/javascript">
+
+    var acceptableColors = [
+        '#de00ff',
+        '#2e2439',
+        '#214ba9',
+        '#2aaeac',
+        '#28ac6f',
+        '#31af37',
+        '#5ed416',
+        '#e8ff24',
+        '#e28f19',
+        '#ff3c00',
+        '#9146ac',
+        '#81a284'
+    ];
+
+    function renderBoxesWithColors(colors) {
+
+        var container = document.createElement("div");
+        container.setAttribute('class', 'box');
+
+        var mixed = document.createElement('div');
+        mixed.setAttribute('class', 'mix');
+
+        var accepted = document.createElement('div');
+        accepted.setAttribute('class', 'mix');
+
+        // THIS IS WHAT IT IS ALL ABOUT
+        var mixedColor = RLColorMixer.mixColors(colors);
+        var acceptedColor = RLColorMixer.findNearest(mixedColor, acceptableColors);
+
+        mixed.style.backgroundColor = mixedColor;
+        accepted.style.backgroundColor = acceptedColor;
+
+        container.appendChild(mixed);
+        container.appendChild(accepted);
+
+        document.body.appendChild(container);
+
+        // count for parts
+        var parts = 0;
+        for(var i = 0, ii = colors.length; i < ii; i++){
+            if (typeof colors[i] == 'object') {
+                parts += colors[i].parts;
+            }
+            else {
+                parts += 1;
+            }
+        }
+
+        for(var i = 0, ii = colors.length; i < ii; i++){
+
+            var colorObject = {};
+            if (typeof colors[i] == 'object') {
+                colorObject = colors[i];
+            }
+            else {
+                colorObject.color = colors[i];
+                colorObject.parts = 1;
+            }
+
+            for(var j = 0, jj = colorObject.parts; j < jj; j++){
+                var colorDiv = document.createElement('div');
+                colorDiv.setAttribute('class', 'color');
+                container.appendChild(colorDiv);
+                colorDiv.style.backgroundColor = colorObject.color;
+                colorDiv.style.width = Math.floor((210 - (parts - 1) * 10) / parts) + "px";
+            }
+
+        }
+
+    }
+
+    document.addEventListener("DOMContentLoaded", function() {
+
+        document.removeEventListener("DOMContentLoaded", arguments.callee, false);
+
+        renderBoxesWithColors(["#0000ff", "#fff000"]);
+        renderBoxesWithColors([{color: "#0000ff", parts: 3}, "#fff000"]);
+        renderBoxesWithColors(["#ff0000", "#fbd335"]);
+        renderBoxesWithColors(["#fbd335", "#ff0000", "#ff0000", "#ff0000"]);
+        renderBoxesWithColors(["#ff0000", "#ff0000", "#ff0000", "#fbd335"]);
+        renderBoxesWithColors(["#3c07a7", "#fbd335", "#f300f0"]);
+        renderBoxesWithColors(["#3c07a7", "#fbd335", "#f300f0", "#faf333"]);
+        renderBoxesWithColors(["#ec8121", "#f15757"]);
+        renderBoxesWithColors(["#ff0000", "#ff0000", "#ff0000", "#ff0000", "#ff0000", "#ff0000", "#fbd335"]);
+
+    }, false);
+
+    </script>
+    <style>
+
+        body {
+            margin: 50px;
+            font-family: sans-serif;
+            color: #666;
+        }
+
+        .color {
+            width: 100px;
+            height: 50px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            float: left;
+        }
+
+        .box {
+            width: 220px;
+            padding: 10px 0 0 10px;
+            border: 1px solid #bababa;
+            margin-right: 20px;
+            margin-bottom: 20px;
+             float: left;
+        }
+
+        .mix {
+            width: 100px;
+            height: 200px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            float: left;
+            background-color: #fafafa;
+        }
+
+        .mix:nth-child(2n) {
+            margin-right: 0px;
+        }
+
+        .warning {
+            font-size: .8em;
+            color: #aaa;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Mixing colors as in real life (substractive)</h1>
+    <p>The bottom colors are the original parts. The big left side color is the mixed color and the one on the right is a snapped color choosen from a list</p>
+    <p class="warning">This example has only been run in chrome...</p>
+</body>
+</html>
