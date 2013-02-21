@@ -33,6 +33,10 @@ Example:
 - RLColorMixer.hexToRgb(*string*); **Returns an array.**
 - RLColorMixer.rgbToHex([*int*, *int*, *int*]); **Returns a RGB color in hex.**
 
+## Dependecies
+The source coude contains the code from https://github.com/bahamas10/node-rgb2ryb
+I included the rgb2ryb code inside the rlcolormixer for ease of use in the browser. Great job @bahamas10.
+
 -------------------------
 ## License 
 
