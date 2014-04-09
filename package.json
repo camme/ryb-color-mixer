@@ -1,5 +1,5 @@
 {
-  "name": "rlcolormixer",
+  "name": "ryb-color-mixer",
   "version": "0.6.0",
   "description": "Mix colors as expected in real life (subtractive) in javascript.",
   "main": "ryb-color-mixer.js",
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Camme/rlcolormixer.git"
+    "url": "https://github.com/camme/ryb-color-mixer.git"
   },
   "keywords": [
     "color",
@@ -19,12 +19,12 @@
   "author": "Camilo Tapia <camilo.tapia@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Camme/rlcolormixer/issues"
+    "url": "https://github.com/camme/ryb-color-mixer/issues"
   },
-  "homepage": "https://github.com/Camme/rlcolormixer",
+  "homepage": "https://github.com/camme/ryb-color-mixer",
   "devDependencies": {
-    "mocha": "^1.17.1",
-    "should": "^3.1.3"
+    "mocha": "~1.17.1",
+    "should": "~3.1.3"
   },
   "dependencies": {
     "ryb2rgb": "0.0.0"
