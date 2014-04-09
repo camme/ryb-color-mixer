@@ -1,41 +1,52 @@
-#Real Life Color Mixer.
+#Real Life Color (RYB) Mixer.
 
 Emulate color mixing as if you where mixing real life colors, ie substractive colors
 
 Usage:
 
-    RLColorMixer.mixColors(arrayOfColors);
-
+    rybColorMixer.mix(arrayOfColors [,options]);
+    
+    // or
+    
+    rybColorMixer.mix(color1, color2, color3.... [,options]);
+    
 Where arrayOfColos is an array of hex rgb colors ['#ff0000', '#00ff00']. Example:
 
-     RLColorMixer.mixColors(['#ff0000', '#00ff00']);
+    rybColorMixer.mix(['#ff0000', '#00ff00']);
 
-You can also pass the amount of each color you want to use:
+You can pass an options object:
 
-    RLColorMixer.mixColors({color: '#ff0000', parts: 10}, {color: '#00ff00', parts: 2});
+    {
+        hex: Boolean, // default is true
+        result: "ryb|rgb", // default is "ryb"
+    }
 
-Or a mixture of the two:
-   
-    RLColorMixer.mixColors(['#ff0000', {color: '#00ff00', parts: 2}]);
+So, for example, if you want to return a mixed color as RGB:
 
-You can also snap to the nearest color in an array of hex rgb colors:
+    rybColorMixer.mix('#ff0000', '#00ff00', { result: "rgb" });
 
-    RLColorMixer.findNearest(orgColorinHex, listOfColors);
+You can also snap to the nearest color in an array of hex colors:
+
+    rybColorMixer.findNearest(orgColorinHex, listOfColors);
 
 Example:
 
-    RLColorMixer.findNearest('#fff000', ['#ff0000', '#ff0f00']);
+    rybColorMixer.findNearest('#fff000', ['#ff0000', '#ff0f00']);
 
 ## List of all methods:
 
-- RLColorMixer.mixColors(*array*); **Returns a RGB color in hex.**
-- RLColorMixer.findNearest(*color*, *array*); **Returns a RGB color in hex.**
-- RLColorMixer.hexToRgb(*string*); **Returns an array.**
-- RLColorMixer.rgbToHex([*int*, *int*, *int*]); **Returns a RGB color in hex.**
+- rybColorMixer.mix(*array* *[,options]*); **Returns a RGB color in hex.**
+- rybColorMixer.mix(*color1, color2, color3, ...* *[,options]*); **Returns a RGB color in hex.**
+- rybColorMixer.findNearest(*color*, *array*); **Returns a RGB color in hex.**
+- rybColorMixer.rybToRgb(*color*); **convert a color from RYB to RGB.**
+
+## More on how this works:
+If you want to read how this works, just head over to [my blog](http://www.1001.io/mixing-real-colours-with-javascript-yellow-blue-green/)
+
 
 ## Dependecies
 The source coude contains the code from https://github.com/bahamas10/node-rgb2ryb
-I included the rgb2ryb code inside the rlcolormixer for ease of use in the browser. Great job @bahamas10.
+I included the rgb2ryb code inside the ryb-color-mixer for ease of use in the browser. Great job @bahamas10.
 
 -------------------------
 ## License 
