@@ -41,7 +41,7 @@ Example:
 - rybColorMixer.rybToRgb(*color*); **convert a color from RYB to RGB.**
 
 ## More on how this works:
-If you want to read how this works, just head over to [my blog](http://www.1001.io/mixing-real-colours-with-javascript-yellow-blue-green/)
+If you want to read how this works, just head over to [my blog](http://1001.io/mixing-real-life-colors-in-javascript-with-ryb/)
 
 
 ## Dependecies
