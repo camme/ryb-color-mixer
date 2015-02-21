@@ -1,6 +1,6 @@
 {
   "name": "ryb-color-mixer",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "description": "Mix colors as expected in real life (subtractive) in javascript.",
   "main": "ryb-color-mixer.js",
   "scripts": {
