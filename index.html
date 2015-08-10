@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
     <title> RLColorMixer </title>
-    <script type="text/javascript" charset="utf-8" src="rlcolormixer-0.5.0.js"> </script>
+    <script type="text/javascript" charset="utf-8" src="ryb-color-mixer.js"> </script>
 
     <script type="text/javascript">
 
@@ -34,8 +34,8 @@
         accepted.setAttribute('class', 'mix');
 
         // THIS IS WHAT IT IS ALL ABOUT
-        var mixedColor = RLColorMixer.mixColors(colors);
-        var acceptedColor = RLColorMixer.findNearest(mixedColor, acceptableColors);
+        var mixedColor = rybColorMixer.mix(colors);
+        var acceptedColor = rybColorMixer.findNearest(mixedColor, acceptableColors);
 
         mixed.style.backgroundColor = mixedColor;
         accepted.style.backgroundColor = acceptedColor;
